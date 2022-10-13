@@ -1,0 +1,7 @@
+﻿  lab 3.2.cpp
+E:\leonnik\Lab\lab 3.1\lab 3.2\lab 3.2.cpp(7,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\leonnik\Lab\lab 3.1\lab 3.2\lab 3.2.cpp(44,9): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+E:\leonnik\Lab\lab 3.1\lab 3.2\lab 3.2.cpp(44,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+E:\leonnik\Lab\lab 3.1\lab 3.2\lab 3.2.cpp(50,15): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+E:\leonnik\Lab\lab 3.1\lab 3.2\lab 3.2.cpp(57,15): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  lab 3.2.vcxproj -> E:\leonnik\Lab\lab 3.1\x64\Debug\lab 3.2.exe
