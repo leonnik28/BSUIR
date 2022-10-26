@@ -1,0 +1,4 @@
+﻿  Lab 4 . 2.cpp
+E:\leonnik\Lab\Lab 4\Lab 4 . 2\Lab 4 . 2.cpp(7,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\leonnik\Lab\Lab 4\Lab 4 . 2\Lab 4 . 2.cpp(55,15): warning C4101: num_col: неиспользованная локальная переменная
+  Lab 4 . 2.vcxproj -> E:\leonnik\Lab\Lab 4\x64\Debug\Lab 4 . 2.exe
