@@ -153,3 +153,29 @@ void print_dinamical_arr(int** arr, int* size, int rowsCount) {
 		printf_s("\n");
 	}
 }
+
+int max(int*& arr, int x) {
+	int max=arr[0]; int max_pos = 0;
+	for (int i = 0; i < x; i++) {
+		
+		if (arr[i] > arr[max_pos]) {
+			max_pos = i;
+			max = arr[max_pos];
+		}
+
+	}
+	return max;
+}
+
+void search_number(int*& arr, int max, int x) {
+	if (max > 2) {
+		for (int i = 0; i < x; i++) {
+			for (int j = 2; j < max; j++) {
+				if (arr[i] != 2 && arr[i] % j == 0) {
+					if (arr[i] == j) continue;
+					else	arr[i] = 1;
+				}
+			}
+		}
+	}
+}

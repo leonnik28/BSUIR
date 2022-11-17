@@ -47,19 +47,21 @@ void Task1() {
     else
         user_array(arr, x, 1);
 
+   
     printf_s("\n"); 
     print_array(arr, x);
 
     printf_s("\n");
+    search_number(arr,max(arr, x), x);
     int n = 0;
-    while (n < x) {
-        if (arr[n] > 1 && arr[n] % 2 == 0) {
-            rem_element(arr, n, x);
-            n = 0;
-            x--;
+        while (n < x) {
+            if (arr[n] == 1) {
+                rem_element(arr, n, x);
+                x--;
+                n = 0;
+            }
+            else n++;
         }
-        else n++;
-    }
     print_array(arr, x);
 }
 

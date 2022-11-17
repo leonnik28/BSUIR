@@ -20,4 +20,6 @@ int** rem_arr(int**& arr, int pos, int size, int width);
 void rand_array(int*& arr, int x, int min, int max);
 void user_array(int*& arr, int x);
 void print_array(int* arr, int x);
+int max(int*& arr, int x);
+void search_number(int*& arr, int max, int x);
 #endif

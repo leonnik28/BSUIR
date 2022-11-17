@@ -1,3 +1,3 @@
-﻿  Lab 5.cpp
-E:\leonnik\Lab\Lab 5\Lab 5\Lab 5.cpp(14,11): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+﻿  Array.cpp
+E:\leonnik\Lab\Lab 5\Lab 5\Array.cpp(99,43): warning C4554: "&": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
   Lab 5.vcxproj -> E:\leonnik\Lab\Lab 5\x64\Debug\Lab 5.exe
