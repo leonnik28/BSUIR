@@ -22,4 +22,7 @@ void user_array(int*& arr, int x);
 void print_array(int* arr, int x);
 int max(int*& arr, int x);
 void search_number(int*& arr, int max, int x);
+int search_pos(int**& arr, int max_pos, int pos, int width, int height);
+int rem(int*& arr, int n1, int x1);
+void search_size(int**& arr, int*& size_arr, int number, int rowsCount);
 #endif

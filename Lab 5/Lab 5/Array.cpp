@@ -179,3 +179,64 @@ void search_number(int*& arr, int max, int x) {
 		}
 	}
 }
+
+int search_pos(int**& arr, int max_pos, int pos, int width, int height) {
+	for (int i = 0; i < width; i++) {
+
+		max_pos = 0;
+
+		for (int j = 0; j < height; j++) {
+
+			if (arr[i][j] > arr[i][max_pos]) {
+				max_pos = j;
+			}
+
+		}
+
+		for (int k = 0; k < width; k++) {
+			if (arr[i][max_pos] > arr[k][max_pos]) {
+				pos = -1;
+				break;
+			}
+			if (arr[i][max_pos] < arr[k][max_pos]) {
+				pos = i;
+			}
+		}
+		if (pos != -1) break;
+	}
+	return pos;
+}
+
+int rem(int*& arr, int n1, int x1) {
+	while (n1 < x1) {
+		if (arr[n1] == 1) {
+			rem_element(arr, n1, x1);
+			x1--;
+			n1 = 0;
+		}
+		else n1++;
+	}
+	return x1;
+}
+
+void search_size(int**& arr, int*& size_arr, int number, int rowsCount) {
+	for (int i = 0; i < rowsCount; i++) {
+		printf_s("Row: %d\n", i);
+		int size;
+		arr[i] = write_until_number(0, &size);
+		for (int j = 0; j < size; j++) {
+			printf_s("\nElement at pos (%d, %d): %d", i, size, arr[i][j]);
+		}
+		printf_s("\n");
+		int n = 0;
+		while (n < size) {
+			if (arr[i][n] > number) {
+				rem_element_sec(arr[i], n, size);
+				n = 0;
+				size--;
+			}
+			else n++;
+		}
+		size_arr[i] = size;
+	}
+}

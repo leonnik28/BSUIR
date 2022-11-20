@@ -36,33 +36,29 @@ srand(time(NULL));
 }
 
 void Task1() {
-      printf_s("Write long: ");
-     int x = getint(0);
- 
+    printf_s("Write long: ");
+    int x = getint(0);
+
     int* arr = allocate(x);
     printf_s("Random? (1 - yes, 0 - no): ");
     int rand = getint(0, 1);
     if (rand == 1)
-        rand_array(arr, x,  1, 100);
+        rand_array(arr, x, 1, 100);
     else
         user_array(arr, x, 1);
 
-   
-    printf_s("\n"); 
+    printf_s("\n");
     print_array(arr, x);
 
     printf_s("\n");
-    search_number(arr,max(arr, x), x);
+    search_number(arr, max(arr, x), x);
     int n = 0;
-        while (n < x) {
-            if (arr[n] == 1) {
-                rem_element(arr, n, x);
-                x--;
-                n = 0;
-            }
-            else n++;
-        }
+
+    x = rem(arr, n, x);
+
+    printf_s("New array: \n");
     print_array(arr, x);
+    free(arr);
 }
 
 void Task2() {
@@ -84,42 +80,20 @@ void Task2() {
 
     print_array_sec(arr, x, y);
 
-    int pos=-1, max_pos=0;
+    int pos = -1, max_pos = 0;
 
-    for (int i = 0; i < x; i++) {
-       
-        max_pos = 0;
-        
-        for (int j = 0; j < y; j++) {
-   
-            if(arr[i][j]>arr[i][max_pos]) {
-                max_pos = j;
-            }
-
-        }
-       
-        for (int k = 0; k < x; k++) {
-            if (arr[i][max_pos] > arr[k][max_pos]) {
-                pos = -1;
-                break;
-            }
-            if (arr[i][max_pos] < arr[k][max_pos]) {
-                    pos = i;
-            }
-        }
-        if (pos != -1) break;
-    }
+    pos = search_pos(arr, max_pos, pos, x, y);
 
     if (pos != -1) {
         arr = rem_arr(arr, pos, x, y);
-        print_array_sec(arr, x-1, y);
+        print_array_sec(arr, x - 1, y);
     }
 
     else {
         print_array_sec(arr, x, y);
         printf_s("there is no saddle point");
     }
-
+    free(arr);
 }
 
 void Task3() {
@@ -129,22 +103,8 @@ void Task3() {
     int rowsCount = getint(0);
     int** arr = allocate_sec(rowsCount);
     int* size_arr = allocate(rowsCount);
-    for (int i = 0; i < rowsCount; i++) {
-        printf_s("Row: %d\n", i);
-        int size;
-        arr[i] = write_until_number(0, &size);
 
-        int n = 0;
-        while (n < size) {
-            if (arr[i][n] > number) {
-                rem_element_sec(arr[i], n, size);
-                n = 0;
-                size--;
-            }
-            else n++;
-        }
-        size_arr[i] = size;
-    }
+    search_size(arr, size_arr, number, rowsCount);
 
     printf_s("\n");
 
