@@ -51,7 +51,7 @@ void Task1() {
     clock_t time_end = clock();
     print_array(arr, x);
 
-    printf_s("\nMerge Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
+    printf_s("\nQuick Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
 
     time_start = clock();
     Buble_sort(arr, x);
@@ -59,23 +59,23 @@ void Task1() {
 
     printf_s("\n");
 
- print_array(arr, x);
-    printf_s("\nMerge Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
+    print_array(arr, x);
+    printf_s("\nBuble Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
     free(arr);
 }
 
 void Task2() {
-    printf_s("Write width: ");
-    int x = getint(0);
     printf_s("Write height: ");
+    int x = getint(0);
+    printf_s("Write width: ");
     int y = getint(0);
     int** arr = allocate_sec(x, y);
     printf_s("Random? (1 - yes, 0 - no): ");
     int rand = getint(0, 1);
     if (rand == 1)
-        rand_array_sec(arr, x, y, 1, 100);
+        rand_array_sec(arr, x, y, 1, 10);
     else
-        user_array_sec(arr, x, y, 1);
+       user_array_sec(arr, x, y, 1);
   
     printf_s("\n");
     print_matrix(arr, x, y);

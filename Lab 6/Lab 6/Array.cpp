@@ -92,8 +92,8 @@ void rand_array_sec(int** arr, int x, int y, int min, int max) {
 void user_array_sec(int** arr, int x, int y, int min) {
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < y; j++) {
-			printf_s("\nWrite element at pos (%d, %d): ", i, j);
-			scanf_s("%d ", &arr[i][j]);
+			printf("Write element at pos (%d, %d): ", i, j);
+			arr[i][j] = getint();
 		}
 	}
 }
@@ -126,39 +126,66 @@ void Sort_matrix(int**& arr, int width, int height) {
 	for (int i = 0; i < width; i++) {
 		
 		int sum = 0;
-		
+
 			for (int j = 0; j < height; j++)
 			{
 				if (arr[i][j] < 0) continue;
 				sum += arr[i][j];	
 			}	
-			sumArr[i] = sum;
+			
+			if (i % k != 0) {	
+				sumArr[i] = 0;	
+			}
+			
+			else {
+				sumArr[i] = sum;
+			}
+		
 	}
 
 	for (int i = 0; i < width; i++) {
 		numSort[i] = i;
 	}
 
-	Buble_sort_line(sumArr, numSort, width);
+	Quick_sort_matrix(sumArr, numSort, 0, width);
+
 	Final_sort(arr, numSort, width, height);
+	
 	free(numSort);
 	
 }
 
-void Buble_sort_line(int*& arr,int *&numSort, int x) {
-	for (int i = 0; i < x - 1; i++) {
-		for (int j = (x - 1); j > i; j--) {
-			if (arr[j - 1] > arr[j]) {
-				int temp = arr[j - 1];
-				arr[j - 1] = arr[j];
-				arr[j] = temp;
+void Quick_sort_matrix(int*& arr, int*& numSort, int left, int right) {
+	int i = left;
+	int j = right;
+	int tmp, sort;
+	int x = arr[(left + right) / 2];
 
-				int sort = numSort[j-1];
-				numSort[j-1] = numSort[j];
+	do {
+		while (arr[i] > x)
+			i++;
+		while (arr[j] < x)
+			j--;
+		if (i <= j) {
+			if (i < j) {
+			
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+
+				sort = numSort[i];
+				numSort[i] = numSort[j];
 				numSort[j] = sort;
 			}
+			i++;
+			j--;
 		}
-	}
+	} while (i <= j);
+
+	if (i < right)
+		Quick_sort_matrix(arr, numSort, i, right);
+	if (left < j)
+		Quick_sort_matrix(arr, numSort, left, j);
 }
 
 void Final_sort(int**& arr, int* sort, int w, int h) {
@@ -166,14 +193,14 @@ void Final_sort(int**& arr, int* sort, int w, int h) {
 	for (int sort_pos = 0; sort_pos < w; sort_pos++) {
 		for (int j = 0; j < h; j++)
 		{
+			
 			new_matrix[sort_pos][j] = arr[sort[sort_pos]][j];
 		}
 	}
-	//for (int i = 0; i < w; i++) {
-		//for (int j = 0; j < h; j++) {
-		free(arr);
-		//} 
-	//}
+	for (int i = 0; i < w; i++) {
+		free(arr[i]); 
+	}
+	free(arr);
 	
 	arr = new_matrix;
 }

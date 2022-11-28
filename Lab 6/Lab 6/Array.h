@@ -13,6 +13,6 @@ void rand_array_sec(int** arr, int x, int y, int min, int max);
 void user_array_sec(int** arr, int x, int y, int min);
 void print_matrix(int** arr, int x, int y);
 void Sort_matrix(int**& arr, int width, int height);
-void Buble_sort_line(int*& arr, int*& numSort, int x);
+void Quick_sort_matrix(int*& arr, int*& numSort, int left, int right);
 void Final_sort(int**& arr, int* sort, int w, int h);
 #endif
