@@ -1,2 +1,5 @@
 ﻿  Array.cpp
+  Lab 6.cpp
+E:\leonnik\Lab\Lab 6\Lab 6\Lab 6.cpp(12,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
   Lab 6.vcxproj -> E:\leonnik\Lab\Lab 6\x64\Debug\Lab 6.exe

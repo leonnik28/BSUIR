@@ -45,22 +45,30 @@ void Task1() {
     printf_s("\n");
     print_array(arr, x);
 
+    int* arr_1 = allocate(x);
+    arr_1 = arr_copy(arr, x);
+    int* arr_2 = allocate(x);
+    arr_2 = arr_copy(arr, x);
+
     printf_s("\n");
     clock_t time_start = clock();
-    Quick_sort(arr,0, x);
+    quick_sort(arr,0, x);
     clock_t time_end = clock();
     print_array(arr, x);
 
-    printf_s("\nQuick Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
+    
 
-    time_start = clock();
-    Buble_sort(arr, x);
-    time_end = clock();
+    clock_t time_start_1 = clock();
+    buble_sort(arr_1, x);
+    clock_t time_end_1 = clock();
 
     printf_s("\n");
 
-    print_array(arr, x);
-    printf_s("\nBuble Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
+    print_array(arr_1, x);
+    
+    printf_s("\nQuick Sort - Ellapsed seconds: %f seconds", (float)(time_end - time_start) / CLOCKS_PER_SEC);
+    printf_s("\nBuble Sort - Ellapsed seconds: %f seconds", (float)(time_end_1 - time_start_1) / CLOCKS_PER_SEC);
+    
     free(arr);
 }
 
@@ -80,7 +88,7 @@ void Task2() {
     printf_s("\n");
     print_matrix(arr, x, y);
 
-    Sort_matrix(arr, x, y);
+    sort_matrix(arr, x, y);
     printf_s("\n");
 
     print_matrix(arr, x, y);

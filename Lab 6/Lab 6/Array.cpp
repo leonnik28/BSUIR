@@ -39,7 +39,7 @@ void print_array(int*& arr, int x) {
 	}
 } 
 
-void Quick_sort(int*& arr, int left, int right) {
+void quick_sort(int*& arr, int left, int right) {
         int i = left;
         int j = right;
         int tmp;
@@ -64,12 +64,18 @@ void Quick_sort(int*& arr, int left, int right) {
         } while (i <= j);
 
         if (i < right)
-            Quick_sort(arr, i, right);
+            quick_sort(arr, i, right);
         if (left < j)
-            Quick_sort(arr, left, j);
+            quick_sort(arr, left, j);
 }
 
-void Buble_sort(int*& arr, int x) {
+int* arr_copy(int*& arr, int size) {
+	int* new_array = allocate(size);
+	memmove(new_array, arr, (size) * sizeof(int));
+	return new_array;
+}
+
+void buble_sort(int*& arr, int x) {
 	for (int i = 0; i < x - 1; i++) {
 		for (int j = (x - 1); j > i; j--) {
 			if (arr[j - 1] > arr[j]) {
@@ -115,7 +121,7 @@ void print_matrix(int** arr, int x, int y) {
 
 
 
-void Sort_matrix(int**& arr, int width, int height) {
+void sort_matrix(int**& arr, int width, int height) {
 
 	printf_s("Enter number k ");
 	int k = getint(0);
@@ -147,15 +153,32 @@ void Sort_matrix(int**& arr, int width, int height) {
 		numSort[i] = i;
 	}
 
-	Quick_sort_matrix(sumArr, numSort, 0, width);
+	buble_sort_matrix(sumArr, numSort, width);
+	//quick_sort_matrix(sumArr, numSort, 0, width);
 
-	Final_sort(arr, numSort, width, height);
+	final_sort(arr, numSort, width, height);
 	
 	free(numSort);
 	
 }
 
-void Quick_sort_matrix(int*& arr, int*& numSort, int left, int right) {
+void buble_sort_matrix(int*& arr, int*& numSort, int x) {
+	for (int i = 0; i < x - 1; i++) {
+		for (int j = 0; j < x; j++) {
+			if (arr[j] < arr[j + 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+
+				int sort = numSort[j];
+				numSort[j] = numSort[j + 1];
+				numSort[j + 1] = sort;
+			}
+		}
+	}
+}
+
+void quick_sort_matrix(int*& arr, int*& numSort, int left, int right) {
 	int i = left;
 	int j = right;
 	int tmp, sort;
@@ -169,13 +192,16 @@ void Quick_sort_matrix(int*& arr, int*& numSort, int left, int right) {
 		if (i <= j) {
 			if (i < j) {
 			
+				
 				tmp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = tmp;
-
+				
 				sort = numSort[i];
 				numSort[i] = numSort[j];
 				numSort[j] = sort;
+				
+				
 			}
 			i++;
 			j--;
@@ -183,17 +209,16 @@ void Quick_sort_matrix(int*& arr, int*& numSort, int left, int right) {
 	} while (i <= j);
 
 	if (i < right)
-		Quick_sort_matrix(arr, numSort, i, right);
+		quick_sort_matrix(arr, numSort, i, right);
 	if (left < j)
-		Quick_sort_matrix(arr, numSort, left, j);
+		quick_sort_matrix(arr, numSort, left, j);
 }
 
-void Final_sort(int**& arr, int* sort, int w, int h) {
+void final_sort(int**& arr, int* sort, int w, int h) {
 	int** new_matrix = allocate_sec(w, h);
 	for (int sort_pos = 0; sort_pos < w; sort_pos++) {
 		for (int j = 0; j < h; j++)
 		{
-			
 			new_matrix[sort_pos][j] = arr[sort[sort_pos]][j];
 		}
 	}
